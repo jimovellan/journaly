@@ -2,6 +2,7 @@
     <!--Nav of this especific layout-->
     <NavBarJournal/>
 
+    <Loading :show="show"/>
     <div class="d-flex">
         <div class="col-4">
             <EntryList />
@@ -27,7 +28,18 @@ export default{
     {
        
     } ,
+    data(){
+        return{
+            show:false
+        }
+    },
      mounted() {
+        
+        this.show = true;
+         setTimeout(()=>{
+
+            this.show = false;
+        },5000);
         
     },
 
