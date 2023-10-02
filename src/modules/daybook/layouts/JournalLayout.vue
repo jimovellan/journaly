@@ -2,7 +2,7 @@
     <!--Nav of this especific layout-->
     <NavBarJournal/>
 
-    <Loading :show="show"/>
+    <Loading :show="getIsLoading"/>
     <div class="d-flex">
         <div class="col-4">
             <EntryList />
@@ -17,7 +17,7 @@
 
 <script>
 import{defineAsyncComponent}  from 'vue'
-import { mapGetters } from 'vuex'; 
+import { mapGetters,mapActions } from 'vuex'; 
 
 export default{
     components:{
@@ -26,20 +26,19 @@ export default{
     },
     computed:
     {
-       
+       ...mapGetters('journal',['getIsLoading'])
     } ,
+    methods: {
+        ...mapActions('journal',['loadEntries'])
+    },
     data(){
         return{
             show:false
         }
     },
-     mounted() {
+     async mounted() {
         
-        this.show = true;
-         setTimeout(()=>{
-
-            this.show = false;
-        },5000);
+       await this.loadEntries();
         
     },
 

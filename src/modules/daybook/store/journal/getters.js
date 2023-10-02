@@ -13,14 +13,17 @@ export const getEntriesByTerm =  (state) =>(term = '')=>
 
 export const getEntryById =  (state) =>(id = '')=>
 {
-    console.log(state.entries);
+    
     const entry =  state.entries.find((entry) =>{ 
-                console.log(entry.id);
-                console.log(entry.id,id,entry.id === id);
+              
                 return entry.id === id});
 
     if(!entry) return undefined;
 
     return {...entry};
 
+}
+
+export const getIsLoading = (state) =>{
+    return state.isLoading;
 }

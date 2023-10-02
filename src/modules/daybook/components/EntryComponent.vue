@@ -47,7 +47,7 @@ export default{
     {
         navigateToDetail()
         {
-            console.log(this.id);
+           
             this.$router.push({name:'journaly_entry',params:{id:this.id}});
         } ,
         

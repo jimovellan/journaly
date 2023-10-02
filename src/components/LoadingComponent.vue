@@ -1,5 +1,5 @@
 <template>
-    <div v-show="show" class="loading_background d-flex flex-column justify-content-center">
+    <div v-if="show" class="loading_background d-flex flex-column justify-content-center">
         <div>
            
             <font-awesome-icon icon="fa-solid fa-spinner" class="text-white" spin size="5x"></font-awesome-icon>
@@ -10,12 +10,18 @@
 </template>
 
 <script>
+
+
 export default{
     props:{
         show:{
             type:Boolean,
             default:false
-        }
+        },
+        
+    },
+    computed:{
+
     }
 
 }

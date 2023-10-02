@@ -11,14 +11,8 @@
 
         <!--Buttons to edit-->
         <div>
-            <button class="btn btn-danger mx-2">
-                Borrar
-                <font-awesome-icon icon="fa fa-trash-alt"></font-awesome-icon>
-            </button>
-            <button class="btn btn-success mx-2">
-                Borrar
-                <font-awesome-icon icon="fa fa-upload"></font-awesome-icon>
-            </button>
+            <Button type="DELETE">Elminar</Button>
+            <Button type="IMAGE" class="btn-success">Subir imagen</Button>
         </div>
     </div>
     <hr>
@@ -36,8 +30,10 @@
 </template>
 
 <script>
-
-    import { mapGetters } from 'vuex';
+    
+    import Button from '@/components/Buttons/Button.vue'
+    import ButtonType from '@/components/Buttons/ButtonType';
+    import { mapGetters , mapActions} from 'vuex';
     import {Normalize} from '@/helpers/dates'
 
     export default
@@ -68,12 +64,14 @@
             }
         
         },
-
+        components:{
+            Button
+        },
         methods:{
             async loadEntry(value){
-                console.log(value);
+             
                 var entry = this.getEntryById(value);
-                console.log(entry);
+               
                 
                 if(!entry) {
                     this.$router.push({name:'not_found'});
